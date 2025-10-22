@@ -86,8 +86,21 @@ python -m medsim.server
 python -m medsim.simulate
 ```
 Visit `http://localhost:8000/simulator` in your browser.
+
+### Interactive Web Demo
+
+You can explore a lightweight, self-contained demo of a MedAgentSim patient in your browser. The web
+app streams responses from the structured MedQA dataset so it runs without accessing external LLMs.
+
+```bash
+uvicorn medsim.webapp.app:app --reload
+```
+
+Then open `http://127.0.0.1:8000/` to start a session. Ask questions, request physical exam findings,
+and reveal the reference diagnosis when you are ready.
+
 ### Host models using vLLM to query
-```bash 
+```bash
 vllm serve unsloth/Llama-3.2-11B-Vision-Instruct-unsloth-bnb-4bit --dtype 'auto'  --quantization "bitsandbytes" --load_format "bitsandbytes" --tensor-parallel-size 4 --max-model-len 8192 --limit-mm-per-prompt image=1
 
 vllm serve llava-hf/llava-v1.6-mistral-7b-hf --tensor-parallel-size 4

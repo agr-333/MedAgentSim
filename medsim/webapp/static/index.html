@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MedAgentSim Interactive Patient</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>MedAgentSim Interactive Patient</h1>
+      <p class="subtitle">
+        Explore a sample MedAgentSim patient by chatting with them as the doctor.
+      </p>
+    </header>
+
+    <main>
+      <section class="sidebar">
+        <div class="card">
+          <h2>Scenario Details</h2>
+          <p><strong>Scenario ID:</strong> <span id="scenario-id">–</span></p>
+          <p><strong>Demographics:</strong> <span id="scenario-demographics">–</span></p>
+          <p><strong>Chief Complaint:</strong> <span id="scenario-complaint">–</span></p>
+          <p><strong>Objective:</strong></p>
+          <p id="scenario-objective" class="multiline">–</p>
+        </div>
+
+        <div class="card">
+          <h2>Progress</h2>
+          <ul>
+            <li>
+              History items remaining:
+              <span id="history-remaining" class="badge">0</span>
+            </li>
+            <li>
+              Physical exam shared:
+              <span id="exam-status" class="badge">No</span>
+            </li>
+            <li>
+              Test results shared:
+              <span id="test-status" class="badge">No</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card actions">
+          <button id="new-session">🎲 New Scenario</button>
+          <button id="reveal-diagnosis">🔍 Reveal Diagnosis</button>
+          <p id="diagnosis" class="diagnosis"></p>
+        </div>
+      </section>
+
+      <section class="chat">
+        <div id="messages" class="messages" aria-live="polite"></div>
+        <form id="chat-form" autocomplete="off">
+          <label for="chat-input" class="sr-only">Ask the patient a question</label>
+          <div class="input-row">
+            <input
+              id="chat-input"
+              type="text"
+              placeholder="Ask the patient a question..."
+              required
+            />
+            <button type="submit" id="send-button">Send</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        The responses are generated from structured dataset information rather than a live
+        language model. Request exam findings or test results to see additional context.
+      </p>
+    </footer>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
